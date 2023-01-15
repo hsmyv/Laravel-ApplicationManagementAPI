@@ -10,7 +10,10 @@ use App\Models\Log;
 use App\Models\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use UserTYpe;
 
 class AdminController extends Controller
 {
@@ -78,11 +81,38 @@ class AdminController extends Controller
             return response()->error(["For 'role' only you can select: Admin, Moderator, User"], 401);
         }
     }
-    public function delete_user(User $user)
-    {
-        $user->delete();
-        return response(['message' => 'User has been deleted successfully']);
+    public function delete_user($id)
+    {   //First we find user has o not
+        $hasUser = User::where('id', $id)->where('status', '1')->first();
+        if($hasUser)
+        {
+            //We find user is admin or no
+            $user = auth()->id();
+            $check = User::where('id', $user)->first();
+            //If user has role "Admin", so he has all permission(He can delete Moderator)
+            if($check->hasRole('Admin'))
+            {
+                DB::update('update users set status = 0 where id = ?', ["$id"]);
+                return response(['message' => 'User has been deleted successfully']);
+
+                //else user can delete all users except Admin and Moderator
+            }else{
+                $admin = User::where('id', $id)->first();
+
+                if ($admin->hasRole('Admin')) {
+                    return response(['message' => "Admin can't delete"]);
+                } elseif ($admin->hasRole('Moderator')) {
+                    return response(['message' => "Moderator can't delete"]);
+                } else {
+                    DB::update('update users set status = 0 where id = ?', ["$id"]);
+                    return response(['message' => 'User has been deleted successfully']);
+                }
+            }
+        }else{
+            return response(['message' => "User can't find"]);
+        }
     }
+
 
     public function update_apply(ApplyRequest $request, Applyment $apply)
     {
@@ -112,6 +142,7 @@ class AdminController extends Controller
     public function update_template(Request $request, $id)
     {
         $template = Template::where('id', $id)->first();
+        //$admin_role = UserTYpe::Admin; //Tahir recomendations writed in the helpers.php
         $form = $request->validate([
             'subject' => 'required',
             'body'    => 'required'

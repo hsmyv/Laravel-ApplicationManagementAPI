@@ -35,4 +35,8 @@ die();
 }
 return true;
 }
+class UserTYpe{
+    const Admin = 0;
+    const Moderator=1;
+}
 

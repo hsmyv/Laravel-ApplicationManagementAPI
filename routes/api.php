@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users',                    [AdminController::class, 'get_users'])->middleware("role:Admin|Moderator");
     Route::post('/create-user',             [AdminController::class, 'create_user'])->middleware("role:Admin|Moderator");
     Route::patch('/user/{user}',            [AdminController::class, 'update_user'])->middleware("role:Admin|Moderator");
-    Route::delete('/user/{user}',           [AdminController::class, 'delete_user'])->middleware("role:Admin|Moderator");
+    Route::delete('/user/{id}',           [AdminController::class, 'delete_user'])->middleware("role:Admin|Moderator");
 
     Route::get('applys',                    [AdminController::class, 'index'])->middleware("role:Admin|Moderator");
     Route::patch('apply/{apply}',           [AdminController::class, 'update_apply'])->middleware("role:Admin|Moderator");

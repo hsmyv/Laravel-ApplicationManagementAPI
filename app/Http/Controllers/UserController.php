@@ -21,8 +21,11 @@ class UserController extends Controller
         $welcomeTemplate = DB::table('templates')->where('id', 1)->first();
 
         $formfill = $request->validated();
-        $user = User::create($request->except('role', 'password_confirmation'));
-        sendUserEmail($user, $request->password, $welcomeTemplate);
+        $formfill['status'] = '1';
+        $user = User::create($formfill);
+        $formfill['role']   = 'User';
+        $user->syncRoles($formfill['role']);
+        //sendUserEmail($user, $request->password, $welcomeTemplate);
         $token = $user->createToken('myappToken')->plainTextToken;
 
         $response = [
@@ -41,12 +44,14 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+
         $formfill = $request->validate([
             'email' => 'required|string|exists:users,email',
             'password' => 'required|string'
         ]);
-
-
+        $check = User::where('email', $request->email)->first();
+        if($check->status == '1')
+        {
         try {
             $user = User::where('email', $formfill['email'])->first();
         } catch (\Illuminate\Database\QueryException $th) {
@@ -68,6 +73,9 @@ class UserController extends Controller
         if (Auth()->attempt($formfill)) {
             session()->regenerate();
             return response($response, 201);
+        }
+        }else{
+            return response(['message' => 'Your account has been deleted!']);
         }
     }
 
