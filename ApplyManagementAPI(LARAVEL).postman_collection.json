@@ -1,0 +1,853 @@
+{
+	"info": {
+		"_postman_id": "1b1502ec-16bf-4629-9e49-38683e22ab86",
+		"name": "ApplyManagementAPI(LARAVEL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23103391"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "usamneseh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hesen123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}api/login",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Applyment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|UjazC3GdceyXSzY5gYLiVGRSQkhQzYBlve7cJBac",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Male",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "Programming",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1000$",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "+994504010212",
+									"type": "text"
+								},
+								{
+									"key": "permanent_residence",
+									"value": "Nizami Street",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Baku",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}api/create-apply",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"create-apply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hasan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "usamneseh@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hesen123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "hesen123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}api/register",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "8|RQIIw87U8mkdGuHqsH1i1Q863RlnoAP02Y8OJSX3",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Leaseddd",
+											"type": "text"
+										},
+										{
+											"key": "parent_id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/create-category",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"create-category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Full-Time",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/category/1",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}api/category/1",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}api/category",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|ZGJEhR3fZgqSwuxsl15JAo26BwF11ye2E7ThHlLX",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Fuad",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "fuad@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fuad123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "fuad123",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "User",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/create-user",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"create-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}api/users",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "3|LosJk8Ogzt70NSaFDq8BzVNmrt9Ab7iHTZg0Z55A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Fuad",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "fuad@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "fuad123",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "Moderator",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/user/2",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "3|LosJk8Ogzt70NSaFDq8BzVNmrt9Ab7iHTZg0Z55A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}api/user/2",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Applyment",
+					"item": [
+						{
+							"name": "Edit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|fSn0yuqHKHbZ43jcs1UBkmf7cgj9LHKidewxRu5O",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "Male",
+											"type": "text"
+										},
+										{
+											"key": "job",
+											"value": "Programming",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "1000$",
+											"type": "text"
+										},
+										{
+											"key": "number",
+											"value": "+994504010212",
+											"type": "text"
+										},
+										{
+											"key": "permanent_residence",
+											"value": "Nizami Street",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Baku",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "accepted",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/apply/4",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"apply",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Applyment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|n6HnW0PEv2a2H8OgpWh0ojquZWcO4Pjho0Inokjf",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "Female",
+											"type": "text"
+										},
+										{
+											"key": "job",
+											"value": "Designer",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "200$",
+											"type": "text"
+										},
+										{
+											"key": "number",
+											"value": "+994507895665",
+											"type": "text"
+										},
+										{
+											"key": "permanent_residence",
+											"value": "Old Street",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Baku",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}api/create-apply",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"create-apply"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseURL}}api/applys",
+									"host": [
+										"{{baseURL}}api"
+									],
+									"path": [
+										"applys"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Template",
+			"item": [
+				{
+					"name": "Welcome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "subject",
+									"value": "Welcome",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Hi {name}\nWelcome to our website!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}api/template/1",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"template",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "subject",
+									"value": "Forgot Password",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your password is: {password}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}api/template/2",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"template",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|DsSUqBRQsFeUUA7l3Uk9IkDupvl7OZsPhhx8xNNb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}api/templates",
+							"host": [
+								"{{baseURL}}api"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
